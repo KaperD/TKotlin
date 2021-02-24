@@ -7,10 +7,10 @@ abstract class GameObject(val name: String, x: Int, y: Int, val speed: Int) {
         protected set
 
     open fun moveUp() {
-        yPos -= speed
+        yPos += speed
     }
     open fun moveDown() {
-        yPos += speed
+        yPos -= speed
     }
     open fun moveLeft() {
         xPos -= speed

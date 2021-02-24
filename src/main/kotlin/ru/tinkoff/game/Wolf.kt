@@ -1,7 +1,6 @@
 package ru.tinkoff.game
 
-class Wolf(name: String, x: Int, y: Int) : Creature(name, x, y, 7, 50, 30, 2) {
-    private var isHidden: Boolean = false
+class Wolf(name: String, x: Int, y: Int, private var isHidden: Boolean = false) : Creature(name, x, y, 7, 50, 30, 2) {
 
     fun hide() {
         isHidden = true

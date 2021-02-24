@@ -3,7 +3,7 @@ package ru.tinkoff.game
 import kotlin.math.abs
 import kotlin.math.max
 
-open class Creature(name: String, x: Int, y: Int, speed: Int, hp: Int, open val damage: Int, open val attackRange: Int)
+open class Creature(name: String, x: Int, y: Int, speed: Int, hp: Int, val damage: Int, private val attackRange: Int)
     : GameObject(name, x, y, speed) {
     var hp: Int = hp
         protected set
@@ -20,10 +20,9 @@ open class Creature(name: String, x: Int, y: Int, speed: Int, hp: Int, open val 
     // return true if attack was successful
     open fun attack(other: Creature): Boolean {
         val dist = max(abs(xPos - other.xPos), abs(yPos - other.yPos))
-        if (dist <= attackRange) {
-            return other.defend(this)
-        }
-        return false
+        return if (dist <= attackRange) {
+            other.defend(this)
+        } else false
     }
 
     override fun moveUp() {
